@@ -17,8 +17,8 @@ def count_words(book_contents: str) -> int:
     return len(book_contents.split())
 
 
-def count_characters() -> dict[str, int]:
-    book_contents = get_book_text("./books/frankenstein.txt")
+def count_characters(book_path: str) -> dict[str, int]:
+    book_contents = get_book_text(book_path)
     characters: dict[str, int] = {}
 
     for char in book_contents.lower():
@@ -27,9 +27,9 @@ def count_characters() -> dict[str, int]:
     return characters
 
 
-def sort_list() -> list[CharEntry]:
+def sort_list(book_path: str) -> list[CharEntry]:
     char_arr: list[CharEntry] = []
-    char_dict = count_characters()
+    char_dict = count_characters(book_path)
     for key, val in char_dict.items():
         entry: CharEntry = {"char": key, "num": val}
         entry["char"] = key
@@ -44,6 +44,6 @@ def sort_list() -> list[CharEntry]:
     return char_arr
 
 
-def get_num_words():
-    contents = get_book_text("./books/frankenstein.txt")
+def get_num_words(book_path: str):
+    contents = get_book_text(book_path)
     return count_words(contents)
